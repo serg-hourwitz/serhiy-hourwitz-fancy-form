@@ -273,6 +273,7 @@ const SwapForm = () => {
                 variant="contained"
                 color="primary"
                 fullWidth
+                size="large"
                 onClick={handleSwap}
                 disabled={submitting}
               >
@@ -284,6 +285,7 @@ const SwapForm = () => {
               sx={{ fontFamily: 'Montserrat', fontWeight: 700 }}
               variant="outlined"
               color="secondary"
+              size="large"
               fullWidth
               onClick={handleReset}
             >
