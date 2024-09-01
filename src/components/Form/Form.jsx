@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MyAvatar from '../Avatar/Avatar';
 import {
   TextField,
   Button,
@@ -12,7 +13,6 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import TokenIcons from '../TokenIcons/TokenIcons';
-
 
 const SwapForm = () => {
   const [tokens, setTokens] = useState([]);
@@ -111,9 +111,10 @@ const SwapForm = () => {
         gutterBottom
         fontFamily={'Montserrat'}
         fontWeight={800}
-        sx={{ mb: 3 }}
+        sx={{ mb: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
       >
         Swap Form
+        <MyAvatar />
       </Typography>
 
       <Typography
@@ -171,6 +172,9 @@ const SwapForm = () => {
               '& .MuiInputBase-input': {
                 fontFamily: 'Montserrat',
                 fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
               },
             }}
             fullWidth
@@ -196,6 +200,9 @@ const SwapForm = () => {
               '& .MuiInputBase-input': {
                 fontFamily: 'Montserrat',
                 fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
               },
             }}
             fullWidth
