@@ -64,7 +64,7 @@ const TokenIcons = ({ symbol, alt }) => {
     <img
       src={Icon}
       alt={alt || `${symbol} icon`}
-      style={{ width: 24, height: 24 }}
+      sx={{ width: 24, height: 24 }}
     />
   );
 };

@@ -8,11 +8,11 @@ import {
   Typography,
   Box,
   Alert,
-  CircularProgress,
   Tooltip,
 } from '@mui/material';
 import axios from 'axios';
 import TokenIcons from '../TokenIcons/TokenIcons';
+import CircularWithValueLabel from '../Progress/Progress';
 
 const SwapForm = () => {
   const [tokens, setTokens] = useState([]);
@@ -97,8 +97,7 @@ const SwapForm = () => {
   return (
     <Box
       sx={{
-        maxWidth: 500,
-        minWidth: 350,
+        width: 400,
         mx: 'auto',
         p: 2,
         border: '1px solid #ddd',
@@ -110,8 +109,14 @@ const SwapForm = () => {
         variant="h5"
         gutterBottom
         fontFamily={'Montserrat'}
+        fontSize={'30px'}
         fontWeight={800}
-        sx={{ mb: 3, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+        sx={{
+          mb: 3,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
       >
         Swap Form
         <MyAvatar />
@@ -159,7 +164,7 @@ const SwapForm = () => {
 
       {loading ? (
         <Box display="flex" justifyContent="center" alignItems="center">
-          <CircularProgress />
+          <CircularWithValueLabel />
         </Box>
       ) : (
         <Stack spacing={2}>
@@ -269,7 +274,7 @@ const SwapForm = () => {
                 onClick={handleSwap}
                 disabled={submitting}
               >
-                {submitting ? <CircularProgress size={24} /> : 'CONFIRM SWAP'}
+                {submitting ? <CircularWithValueLabel /> : 'CONFIRM SWAP'}
               </Button>
             </Tooltip>
 

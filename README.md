@@ -1,8 +1,34 @@
-# React + Vite
+Problem 1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+/* using for loop */
 
-Currently, two official plugins are available:
+const sum_to_n_a = (n) => {
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
+};
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+console.log(sum_to_n_a(5)); //15
+
+
+/* using arithmetic formula */
+
+const sum_to_n_b = (n) => {
+  return (n * (n + 1)) / 2;
+};
+
+console.log(sum_to_n_a(4)); //10
+
+/* using recursive approach */
+
+const sum_to_n_c = (n) => {
+  if (n <= 1) {
+    return n;
+  }
+  return n + sum_to_n_c(n - 1);
+};
+
+console.log(sum_to_n_a(3)); //6
+
