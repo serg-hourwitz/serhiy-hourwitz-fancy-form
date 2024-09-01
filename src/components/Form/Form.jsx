@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import axios from 'axios';
+import TokenIcons from '../TokenIcons/TokenIcons';
 
 
 const SwapForm = () => {
@@ -180,6 +181,7 @@ const SwapForm = () => {
           >
             {tokens.map((token) => (
               <MenuItem key={token.symbol} value={token.symbol}>
+                <TokenIcons symbol={token.symbol} alt={token.symbol} />
                 {`${token.symbol} (Rate: ${token.price})`}
               </MenuItem>
             ))}
@@ -204,6 +206,7 @@ const SwapForm = () => {
           >
             {tokens.map((token) => (
               <MenuItem key={token.symbol} value={token.symbol}>
+                <TokenIcons symbol={token.symbol} alt={token.symbol} />
                 {`${token.symbol} (Rate: ${token.price})`}
               </MenuItem>
             ))}
