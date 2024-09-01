@@ -33,21 +33,20 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const SmallAvatar = styled(Avatar)(({ theme }) => ({
-  width: 22,
-  height: 22,
-  border: `2px solid ${theme.palette.background.paper}`,
-}));
 
 export default function BadgeAvatars() {
   return (
-    <Stack>
+    <Stack sx={{ boxShadow: 5, borderRadius: '50%', border: '1px solid #ddd' }}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
       >
-        <Avatar alt="My photo" src="/public/photo.jpg" sx={{width: 50, height: 50}}/>
+        <Avatar
+          alt="My photo"
+          src="/public/photo.jpg"
+          sx={{ width: 50, height: 50 }}
+        />
       </StyledBadge>
     </Stack>
   );

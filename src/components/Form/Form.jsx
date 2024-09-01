@@ -116,6 +116,8 @@ const SwapForm = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          textShadow: '0 0 15px #ddd',
+          textDecoration: 'underline',
         }}
       >
         Swap Form
