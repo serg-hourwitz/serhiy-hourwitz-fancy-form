@@ -1,5 +1,12 @@
-import { useState, useEffect } from 'react';
+/* Custom Components */
 import MyAvatar from '../Avatar/Avatar';
+import TokenIcons from '../TokenIcons/TokenIcons';
+import CircularWithValueLabel from '../Progress/Progress';
+
+/* React Imports */
+import { useState, useEffect } from 'react';
+
+/* MUI Components */ 
 import {
   TextField,
   Button,
@@ -10,26 +17,39 @@ import {
   Alert,
   Tooltip,
 } from '@mui/material';
-import axios from 'axios';
-import TokenIcons from '../TokenIcons/TokenIcons';
-import CircularWithValueLabel from '../Progress/Progress';
 
+/* Axios */ 
+import axios from 'axios';
+
+
+/* State Variable */
 const SwapForm = () => {
+  // Stores the list of available tokens fetched from the AP
   const [tokens, setTokens] = useState([]);
+  // Store the selected tokens for swapping
   const [inputToken, setInputToken] = useState('');
   const [outputToken, setOutputToken] = useState('');
+  // Store the input and calculated output amounts for the swap
   const [inputAmount, setInputAmount] = useState('');
   const [outputAmount, setOutputAmount] = useState('');
+  // Stores error messages to display in the UI
   const [error, setError] = useState('');
+  // A flag to show a loading indicator while fetching data
   const [loading, setLoading] = useState(false);
+  // A flag to show a loading indicator during the swap process
   const [submitting, setSubmitting] = useState(false);
+  // Stores a success message to display upon a successful swap
   const [successMessage, setSuccessMessage] = useState('');
 
+  /* Current date and time variables */
   const currentDate = new Date().toLocaleDateString();
   const currentTime = new Date().toLocaleTimeString();
 
+  /* useEffect fetches token prices from the provided API when the component mounts */
   useEffect(() => {
+    // activates the loading state, and it's set to false once the data is fetched or an error occurs
     setLoading(true);
+    // fetches the token prices
     axios
       .get('https://interview.switcheo.com/prices.json')
       .then((response) => {
@@ -37,6 +57,7 @@ const SwapForm = () => {
 
         const availableTokens = response.data
           .map((tokenData) => {
+            // The response data is parsed to extract the symbol and price of each token
             const symbol = tokenData?.currency || tokenData?.symbol;
             const price = tokenData?.price || tokenData?.USD;
 
@@ -48,29 +69,30 @@ const SwapForm = () => {
         setTokens(availableTokens);
       })
       .catch((error) => {
+        // If the API call fails, an error message is set using setError.
         console.error('Error fetching token prices:', error);
         setError('Failed to fetch token prices');
       })
       .finally(() => setLoading(false));
   }, []);
 
+  /* Validation */
   const handleSwap = () => {
+    // If all fields are filled
     if (!inputToken || !outputToken || !inputAmount) {
       setError('Please fill in all fields');
       return;
     }
-
-    if (inputAmount < 0) {
-      setError('Amount to send cannot be less than 0');
-      return;
-    }
-
+    // If the selected tokens for input and output are different
     if (inputToken === outputToken) {
       setError('Select different tokens to swap');
       return;
     }
 
+    // setSubmitting(true) is used to show a loading state during the swap process
     setSubmitting(true);
+
+    // After a delay (simulating processing time), the output amount is calculated using the prices of the selected tokens.
     setTimeout(() => {
       const inputTokenPrice =
         tokens.find((token) => token.symbol === inputToken)?.price || 0;
@@ -79,12 +101,14 @@ const SwapForm = () => {
 
       const outputValue = (inputAmount * inputTokenPrice) / outputTokenPrice;
       setOutputAmount(outputValue.toFixed(2));
+      // Displays success or error messages based on the validation and swap process.
       setError('');
       setSuccessMessage('Swap confirmed successfully!');
       setSubmitting(false);
     }, 2000);
   };
 
+  // resets all input fields, error messages, and the success message to their initial state
   const handleReset = () => {
     setInputToken('');
     setOutputToken('');
@@ -121,6 +145,7 @@ const SwapForm = () => {
         }}
       >
         Swap Form
+        {/* avatar reserves the copyright to this form */}
         <MyAvatar />
       </Typography>
 
@@ -154,7 +179,7 @@ const SwapForm = () => {
           {error}
         </Alert>
       )}
-
+      {/* Conditional rendering of error and success messages using Material-UI's Alert component */}
       {successMessage && (
         <Alert
           severity="success"
@@ -163,7 +188,7 @@ const SwapForm = () => {
           {successMessage}
         </Alert>
       )}
-
+      {/* If loading is true, a circular progress indicator is displayed */}
       {loading ? (
         <Box display="flex" justifyContent="center" alignItems="center">
           <CircularWithValueLabel />

@@ -1,5 +1,6 @@
 import React from 'react'; 
 
+/* Icons */
 import BlurIcon from '../../assets/tokens/BLUR.svg';
 import BneoIcon from '../../assets/tokens/bNEO.svg';
 import BusdIcon from '../../assets/tokens/BUSD.svg';
@@ -25,7 +26,7 @@ import WbtcIcon from '../../assets/tokens/WBTC.svg';
 import YieldUSDIcon from '../../assets/tokens/YieldUSD.svg';
 import ZilIcon from '../../assets/tokens/ZIL.svg';
 
-
+// Icons variables
 const tokenIcons = {
   BLUR: BlurIcon,
   bNEO: BneoIcon,
