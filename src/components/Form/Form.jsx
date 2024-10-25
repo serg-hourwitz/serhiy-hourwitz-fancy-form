@@ -121,7 +121,7 @@ const SwapForm = () => {
   return (
     <Box
       sx={{
-        width: 400,
+        maxWidth: 400,
         mx: 'auto',
         p: 2,
         border: '1px solid #ddd',
