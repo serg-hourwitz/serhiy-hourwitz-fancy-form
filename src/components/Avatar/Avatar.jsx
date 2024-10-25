@@ -44,7 +44,7 @@ export default function BadgeAvatars() {
       >
         <Avatar
           alt="My photo"
-          src="/public/photo.jpg"
+          src="/photo.jpg"
           sx={{ width: 50, height: 50 }}
         />
       </StyledBadge>
